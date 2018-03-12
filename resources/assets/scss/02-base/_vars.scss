@@ -1,0 +1,40 @@
+/* --- Colours --- */
+
+$primaryColor: #4F2684;
+$secondaryColor: #EFE7FB;
+$tertiaryColor: #BADA55;
+
+$white: #fff;
+$black: #555555;
+$grey: #95989A;
+$lightGrey: lighten($grey, 5%);
+
+/* --- Colours --- */
+
+$shadow: 0px 3px 6px rgba(0,0,0,0.16);
+
+
+/* --------------------------------*/
+
+/* --- Fonts --- */
+
+$primaryFont: 'Open Sans';
+$secondaryFont: 'Open Sans';
+
+/* --- Fonts --- */
+
+/* --------------------------------*/
+
+
+/* --- Media Querys --- */
+
+$largeMobile: "(min-width: 425px)";
+$small-tablet: "(min-width: 600px)";
+$tablet: "(min-width: 768px)";
+$laptop: "(min-width: 1024px)";
+$desktop: "(min-width: 1320px)";
+$largeDesktop: "(min-width: 1650px)";
+
+// example: @media #{$small-tablet} { }
+
+/* --- Media Querys --- */

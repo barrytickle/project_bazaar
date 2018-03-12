@@ -1,0 +1,106 @@
+.dashboard aside{
+  height:100vh;
+}
+
+
+.left--sidebar{
+  &.active{
+    width:100%;
+    height:100vh;
+    background:$secondaryColor;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index: 10;
+
+    @include display(flex);
+    @include flex-direction(column);
+  }
+  font-size:1.6em;
+  box-shadow:$shadow;
+  // position: relative;
+
+  display:none;
+
+  @media #{$laptop}{
+    width:20vw;
+    @include display(flex);
+    @include flex-direction(column);
+    position: relative;
+    height:100vh;
+  }
+  @media #{$desktop}{
+    width:10vw;
+  }
+
+  >div{
+    padding:20px;
+  }
+
+  .welcome--message{
+    font-size:2rem;
+    span{
+      font-size:1.6rem;
+      color:$primaryColor;
+    }
+  }
+
+
+  nav{
+    @include display(flex);
+    @include flex-direction(column);
+    a{
+      padding:20px;
+      color:$primaryColor;
+      text-decoration: none;
+      transition: 0.2s ease-in-out;
+      &.active, &:hover{
+        background:$secondaryColor;
+      }
+      &:after{
+        content:'';
+        display:inline-block;
+        height:13px;
+        width:13px;
+        background-image:url('/images/icons/arrow-right-circle.svg');
+        background-size:100%;
+        margin-left:10px;
+      }
+    }
+  }
+
+  .nav--bottom{
+    position: absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+
+    .logout{
+      background:$primaryColor;
+      color:$white;
+      &:hover{
+        background:darken($primaryColor, 10%);
+      }
+      &:after{
+        display:none;
+      }
+    }
+  }
+
+}
+.right--sidebar{
+  display:none;
+  @media #{$desktop}{
+      width:30vw;
+      display:block;
+
+  }
+
+  &:after{
+    width:100% !important;
+  }
+
+  h1{
+    font-size:4em !important;
+  }
+}

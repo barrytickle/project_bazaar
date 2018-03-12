@@ -1,0 +1,83 @@
+.hamburger_float{
+  position: fixed;
+  height:50px;
+  width:50px;
+  right:5px;
+  bottom:5px;
+  border-radius: 50%;
+  background:lighten($primaryColor, 20%);
+  z-index: 20;
+  @include display(flex);
+  @include justify-content(center);
+  @include align-items(center);
+  @media #{$laptop}{
+    display:none;
+  }
+
+  #hamburger{
+    width: 36px;
+    height: 18px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    margin:0;
+
+    .line{
+      width: 36px;
+      height: 2px;
+      display: block;
+      background-color: $white;
+      position: absolute;
+      left: 0;
+      transition: all .3s cubic-bezier(0.580, 0.000, 0.580, 1.000);
+
+      &:nth-child(1){
+        top: 0;
+      }
+      &:nth-child(2){
+        top: 50%;
+        margin-top: -1px;
+        width: 28px;
+      }
+      &:nth-child(3){
+        top: 100%;
+        margin-top: -2px;
+        width: 36px;
+      }
+    }
+
+    &:hover, &:focus{
+      .line{
+        &:nth-child(1){
+          width:28px;
+          transform: translateY(-1px);
+        }
+        &:nth-child(3){
+          width:28px;
+          transform: translateY(1px);
+        }
+        &:nth-child(2){
+          width:36px;
+        }
+      }
+    }
+    &.active{
+      .line{
+        background-color:$white;
+        &:nth-child(1){
+          transform: translateY(8px) rotate(45deg);
+          width: 26px;
+        }
+        &:nth-child(2){
+          opacity: 0;
+        }
+        &:nth-child(3){
+          width:26px;
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,8 @@
+.main-body{
+  // padding:0 30px;
+  width:100vw;
+  @media #{$laptop}{
+    padding:0 30px;
+    width:100%;
+  }
+}

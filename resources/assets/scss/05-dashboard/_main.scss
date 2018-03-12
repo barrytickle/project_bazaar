@@ -1,0 +1,111 @@
+.dashboard{
+  @include display(flex);
+  >section{
+    width:100vw;
+    background-image:url('/images/background/student.svg');
+    background-size:512px 512px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    position: relative;
+    @media #{$laptop}{
+      width:80vw;
+      height:100vh;
+      overflow-y:auto;
+      padding-bottom:60px;
+    }
+
+
+    footer{
+      @media #{$laptop}{
+        position: relative;
+        width:90%;
+      }
+    }
+  }
+
+
+  .toolbar{
+    height:50px;
+    @include display(flex);
+    @include align-items(center);
+    @include flex-direction(column);
+    width:100vw;
+    height:auto;
+    padding:0 30px;
+    @media #{$laptop}{
+      width:100%;
+    }
+    @media #{$desktop}{
+      @include flex-direction(flex-start);
+    }
+    &.toolbar--top{
+      font-size:2em;
+      @include display(flex);
+      @include justify-content(flex-start);
+      @include justify-content(center);
+      @include flex-direction(column);
+
+      @media #{$laptop}{
+        @include justify-content(flex-start);
+      }
+      @media #{$desktop}{
+        @include flex-direction(row);
+
+        padding:20px 30px;
+      }
+
+      >div{
+        margin-right:30px;
+      }
+      .search--group{
+        @include display(flex);
+        @include flex-direction(column);
+        margin-bottom:30px;
+        width:100%;
+        @media #{$desktop}{
+          width:40%;
+          @include flex-direction(row);
+          margin-bottom:0;
+        }
+        select{
+          margin-left:10px;
+          border:0;
+          font-family:$primaryFont;
+          color:$primaryColor;
+          font-size:1.8rem;
+          outline: none;
+        }
+      }
+    }
+    &.toolbar--secondary{
+      font-size:1.6em;
+      background:$secondaryColor;
+      @media #{$laptop}{
+        padding:10px 20px;
+      }
+      span{
+        color:$primaryColor;
+      }
+    }
+    .default-navigation{
+      @include display(flex);
+      @include flex-direction(column);
+      @media #{$laptop}{
+        @include flex-direction(row);
+      }
+      p{
+        margin-right:30px;
+        color:$black;
+        margin-bottom:30px;
+        @media #{$desktop}{
+          margin-bottom:0;
+        }
+        span{
+          color:$primaryColor;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+}

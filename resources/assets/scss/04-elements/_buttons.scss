@@ -1,0 +1,22 @@
+.btn{
+  padding:10px 20px;
+  font-weight:400;
+  text-shadow: $shadow;
+  box-shadow:$shadow;
+  border-radius: 5px;
+  border:0;
+  background:$primaryColor;
+  color:$white;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  &:hover{
+    background:darken($primaryColor, 10%);
+  }
+}
+
+.btn-outline{
+  text-decoration: none;
+  color:$white;
+  border:2px solid $white;
+  background:transparent;
+}

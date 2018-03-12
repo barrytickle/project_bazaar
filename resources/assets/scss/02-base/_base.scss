@@ -1,0 +1,29 @@
+@import "vars";
+
+*{
+  box-sizing: border-box;
+  font-family:$primaryFont;
+  text-rendering: optimizeLegibility;
+  margin:0;
+  padding:0;
+}
+
+body,html{
+  margin: 0;
+  font-size:10px;
+}
+
+.site-container{
+  padding: 20px;
+
+  @media #{$tablet}{
+    padding: 25px;
+  }
+  @media #{$laptop}{
+    width: 900px;
+    margin: 0 auto;
+  }
+  @media #{$desktop}{
+    width: 1200px;
+  }
+}

@@ -1,0 +1,40 @@
+footer{
+  margin-top:60px;
+  width:70%;
+  font-size:1.6em;
+  @include display(flex);
+  @include justify-content(space-between);
+  @include flex-direction(column);
+  @media #{$laptop}{
+    @include flex-direction(row); 
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    bottom:20px;
+  }
+
+  nav{
+    @include display(flex);
+    @include flex-direction(column);
+    @media #{$laptop}{
+      display:block;
+    }
+  }
+  a,span{
+    color:$grey;
+    font-weight:100;
+  }
+  a{
+    text-decoration: none;
+    margin-right:20px;
+    &:hover{
+      color:$primaryColor;
+      text-decoration: underline;
+    }
+  }
+
+  .callback-url a{
+    color:$primaryColor;
+    font-weight:400;
+  }
+}

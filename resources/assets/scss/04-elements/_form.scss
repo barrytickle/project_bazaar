@@ -1,0 +1,17 @@
+form{
+  input,textarea{
+    padding:20px;
+    box-shadow:$shadow;
+    border:none;
+    &::placeholder{
+      color:$grey;
+      font-style: italic;
+    }
+  }
+
+  label{
+    font-weight:100;
+    color:$primaryColor;
+  }
+
+}
