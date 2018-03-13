@@ -10,5 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 Route::resource('/', 'StudentController');
+
+
+Route::group(['middleware' => 'web'], function(){
+  Route::auth();
+  
+  Route::resource('/register', 'RegisterController' );
+  Route::get('/home', 'HomeController@index');
+  Route::resource('/student/dashboard', 'StudentDashboardController');
+});

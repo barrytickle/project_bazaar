@@ -402,6 +402,12 @@ body, html {
 .section--form .form--group form label, .section--form .form--group form input {
   font-size: 2em;
 }
+.section--form .form--group form input {
+  margin-bottom: 30px;
+}
+.section--form .form--group form input[type="submit"] {
+  margin-bottom: 0;
+}
 .section--form .form--group .submit-block {
   margin-top: 20px;
   display: -webkit-box;
@@ -564,6 +570,14 @@ form label {
   font-weight: 100;
   color: #4F2684;
 }
+form .input--success {
+  color: #468847;
+  background: #dff0d8;
+}
+form .input--error {
+  color: #b94a48;
+  background: #f5d3dd;
+}
 
 .btn {
   padding: 10px 20px;
@@ -689,6 +703,11 @@ form label {
 }
 .left--sidebar nav a.active, .left--sidebar nav a:hover {
   background: #EFE7FB;
+}
+@media (min-width: 1024px) {
+  .left--sidebar nav a {
+    padding-right: 40px;
+  }
 }
 .left--sidebar nav a:after {
   content: '';
@@ -973,6 +992,15 @@ form label {
     -moz-flex-direction: row;
     flex-direction: row;
     -ms-flex-direction: row;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    box-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
     padding: 20px 30px;
   }
 }
@@ -1002,7 +1030,7 @@ form label {
 }
 @media (min-width: 1320px) {
   .dashboard .toolbar.toolbar--top .search--group {
-    width: 40%;
+    width: auto;
     -webkit-box-orient: horizontal;
     -moz-box-orient: horizontal;
     box-orient: horizontal;
@@ -1137,9 +1165,6 @@ form label {
   font-size: 2em;
   width: 100%;
 }
-.rwd-table .btn-outline {
-  display: block;
-}
 .rwd-table tr:nth-child(even) {
   background-color: #4F2684;
 }
@@ -1159,6 +1184,11 @@ form label {
 }
 .rwd-table tr:nth-child(odd) .btn-outline:hover {
   color: #fff;
+}
+@media (min-width: 1320px) {
+  .rwd-table tr:nth-child(odd) .btn-outline {
+    display: table;
+  }
 }
 .rwd-table th, .rwd-table td {
   margin: .5em 1em;

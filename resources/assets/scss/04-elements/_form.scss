@@ -14,4 +14,15 @@ form{
     color:$primaryColor;
   }
 
+  .input--success{
+    color:$success_color;
+    background:$success;
+  }
+
+  .input--error{
+    color:$error_color;
+    background:$error;
+  }
+
+
 }

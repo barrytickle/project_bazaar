@@ -12,7 +12,7 @@ class StaffTableSeeder extends Seeder
     public function run()
     {
         DB::table('staff')->insert([
-          ['id' => 1, 'staff_name' => 'David Walsh', 'staff_email' => 'David.Walsh@edgehill.ac.uk', 'password' => md5('webdev')]
+          ['id' => 1, 'user_id' => 2, 'staff_name' => 'David Walsh']
         ]);
     }
 }

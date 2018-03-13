@@ -15,9 +15,9 @@ class CreateStaffTable extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->increments('id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->char('staff_name',255);
-            $table->char('staff_email', 255);
-            $table->char('password', 255);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

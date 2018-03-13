@@ -111,7 +111,13 @@
         @include display(flex);
         @include flex-direction(column);
         label, input{
-          font-size:2em;
+          font-size:2em
+        }
+        input{
+          margin-bottom:30px;
+        }
+        input[type="submit"]{
+          margin-bottom:0;
         }
       }
       .submit-block{

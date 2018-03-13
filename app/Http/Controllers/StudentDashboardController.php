@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
-use App\Http\Requests;
-use DB;
-use App\user;
-use App\student;
-use App\log;
 
-class StudentController extends Controller
+use App\Http\Requests;
+use Auth;
+use App\role;
+use App\User;
+use App\degree;
+use App\project;
+use App\student;
+class StudentDashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +19,16 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
+     public function __construct()
+      {
+          $this->middleware('auth');
+      }
     public function index()
     {
-        return view('students/login');
+        $user = Auth::user();
+        $student_id = Auth::user()->student->student_id;
+        return view('students.dashboard', compact('user', 'student_id'));
+
     }
 
     /**
@@ -31,6 +38,7 @@ class StudentController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -41,29 +49,8 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-      $input = $request->all();
-      $email = $request->input('student_email');
-      $password = bcrypt($request->input('student_password'));
-      $password = bcrypt($request->input('student_password_confirm'));
-
-      $checker = user::where('email', '=', $email)->orWhere('password', '=', $password)->first();
-      if (count($checker) < 1) {
-        $student = user::findOrFail($checker->id);
-        echo $student->id;
-        $student_id = student::where('user_id', '=', $student->id)->first();
-        $student_id = $student_id->student_id;
-        $ip_address = $_SERVER['REMOTE_ADDR'] ;
-        $date = date('Y-m-d H:i:s');
-        log::create(['student_id' => $student_id, 'date' => $date, 'ip_address' => $ip_address]);
-
-        Auth::loginUsingId($student->id);
-        return redirect('student/dashboard');
-      }else{
-
-      }
-
-
-}
+        //
+    }
 
     /**
      * Display the specified resource.
@@ -109,5 +96,4 @@ class StudentController extends Controller
     {
         //
     }
-
 }

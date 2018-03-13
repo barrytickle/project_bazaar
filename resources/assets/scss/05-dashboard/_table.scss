@@ -63,9 +63,6 @@ $breakpoint-alpha: 480px; // adjust to your needs
   overflow: hidden;
   font-size:2em;
   width:100%;
-  .btn-outline{
-    display:block;
-  }
   tr{
     &:nth-child(even){
       background-color:$primaryColor;
@@ -85,6 +82,9 @@ $breakpoint-alpha: 480px; // adjust to your needs
         text-shadow: none;
         &:hover{
           color:$white;
+        }
+        @media #{$desktop}{
+          display:table;
         }
       }
     }
@@ -106,14 +106,5 @@ $breakpoint-alpha: 480px; // adjust to your needs
       color:$black;
       font-weight:300;
     }
-
-
-
-
-
-}
-
-
-
-
+  }
 }

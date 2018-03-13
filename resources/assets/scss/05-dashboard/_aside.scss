@@ -57,6 +57,11 @@
       &.active, &:hover{
         background:$secondaryColor;
       }
+
+
+      @media #{$laptop}{
+        padding-right:40px;
+      }
       &:after{
         content:'';
         display:inline-block;

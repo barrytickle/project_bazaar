@@ -50,6 +50,7 @@
       }
       @media #{$desktop}{
         @include flex-direction(row);
+        @include justify-content(center);
 
         padding:20px 30px;
       }
@@ -63,7 +64,7 @@
         margin-bottom:30px;
         width:100%;
         @media #{$desktop}{
-          width:40%;
+          width:auto;
           @include flex-direction(row);
           margin-bottom:0;
         }
