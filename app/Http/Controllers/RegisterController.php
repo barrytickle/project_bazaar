@@ -7,17 +7,42 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
 use App\user;
+use App\student;
+use App\degree;
 
 class RegisterController extends Controller
 {
 
     public function index()
     {
-      return view('students.register');
+      $degree = degree::all();
+      $array = array();
+      foreach($degree as $deg){
+        $array[$deg->id] = $deg->name;
+      }
+      return view('auth.register', compact('array'));
     }
 
     public function store(Request $request)
     {
-    
+      $input = $request->all();
+      $id = $request->input('student_email');
+      $degree = $request->input('degree');
+      $email = $id.'@go.edgehill.ac.uk';
+      $password = bcrypt($request->input('student_password'));
+      $checker = user::where('email', '=', $email)->orWhere('password', '=', $password)->first();
+      if (count($checker) < 1) {
+        user::create(['email' => $email, 'password' => $password, 'role' => 1]);
+        $check_2 = user::where('email', '=', $email)->first();
+        print_r($check_2);
+        if (count($check_2) > 0) {
+          $user_id = $check_2->id;
+          echo $user_id;
+          student::create(['user_id' => $user_id, 'student_id' => $id, 'degree_id' => $degree]);
+        }
+        return redirect('/');
+      }else{
+        echo 'User Already Exists';
     }
+  }
 }

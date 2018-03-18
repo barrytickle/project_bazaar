@@ -63,6 +63,11 @@ $breakpoint-alpha: 480px; // adjust to your needs
   overflow: hidden;
   font-size:2em;
   width:100%;
+  .btn-outline{
+    @media #{$desktop}{
+      display:table;
+    }
+  }
   tr{
     &:nth-child(even){
       background-color:$primaryColor;
@@ -83,9 +88,7 @@ $breakpoint-alpha: 480px; // adjust to your needs
         &:hover{
           color:$white;
         }
-        @media #{$desktop}{
-          display:table;
-        }
+
       }
     }
   }

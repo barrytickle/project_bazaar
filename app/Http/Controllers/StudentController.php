@@ -21,7 +21,11 @@ class StudentController extends Controller
 
     public function index()
     {
-        return view('students/login');
+        if(Auth::user()){
+          return redirect('student/dashboard');
+        }else{
+          return view('auth.login');
+        }
     }
 
     /**
@@ -42,12 +46,13 @@ class StudentController extends Controller
     public function store(Request $request)
     {
       $input = $request->all();
-      $email = $request->input('student_email');
+      $id = $request->input('student_email');
+      $email = $id.'@go.edgehill.ac.uk';
       $password = bcrypt($request->input('student_password'));
-      $password = bcrypt($request->input('student_password_confirm'));
-
       $checker = user::where('email', '=', $email)->orWhere('password', '=', $password)->first();
       if (count($checker) < 1) {
+        echo 'Not found';
+      }else{
         $student = user::findOrFail($checker->id);
         echo $student->id;
         $student_id = student::where('user_id', '=', $student->id)->first();
@@ -58,8 +63,6 @@ class StudentController extends Controller
 
         Auth::loginUsingId($student->id);
         return redirect('student/dashboard');
-      }else{
-
       }
 
 

@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class student extends Model
 {
     protected $fillable = [
-      'student_id'
+      'user_id',
+      'student_id',
+      'degree_id'
     ];
 
     public function user(){
@@ -17,6 +19,10 @@ class student extends Model
     public function degree(){
       return $this->belongsTo('App\degree');
     }
+
+     public function project(){
+       return $this->belongsTo('App\project', 'project_author');
+     }
 
 
 

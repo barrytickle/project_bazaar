@@ -11,12 +11,22 @@
 |
 */
 Route::resource('/', 'StudentController');
-
-
 Route::group(['middleware' => 'web'], function(){
   Route::auth();
-  
+
+  Route::resource('/login', 'StudentController');
   Route::resource('/register', 'RegisterController' );
-  Route::get('/home', 'HomeController@index');
+  // Route::get('/home', 'HomeController@index');
   Route::resource('/student/dashboard', 'StudentDashboardController');
+  Route::resource('/student/dashboard/projects', 'ProjectController');
+
+
+  Route::get('/ajaxrequest/modal-load/{student}/{slug}', 'AjaxRequest@modalslug');
+  Route::get('/ajaxrequest/like-project/{student}/{slug}', 'AjaxRequest@likeproject');
+
+
+  Route::get('/logout', function(){
+    Auth::logout();
+  });
+
 });

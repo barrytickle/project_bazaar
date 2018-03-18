@@ -50,7 +50,7 @@
       }
       @media #{$desktop}{
         @include flex-direction(row);
-        @include justify-content(center);
+        @include justify-content(space-between);
 
         padding:20px 30px;
       }
@@ -67,6 +67,12 @@
           width:auto;
           @include flex-direction(row);
           margin-bottom:0;
+          width:50%;
+        }
+
+        span{
+          font-weight:100;
+          margin-right:10px;
         }
         select{
           margin-left:10px;
@@ -75,6 +81,26 @@
           color:$primaryColor;
           font-size:1.8rem;
           outline: none;
+        }
+
+        .selectize-control{
+          @media #{$desktop}{
+            width:80%;
+          }
+        }
+
+        .selectize-input{
+          width:100%;
+        }
+      }
+
+      .select--group{
+        @include display(flex);
+        p{
+          margin-right:10px;
+        }
+        .selectize-control{
+          width:80px;
         }
       }
     }
@@ -98,12 +124,13 @@
         margin-right:30px;
         color:$black;
         margin-bottom:30px;
+        font-weight:100;
         @media #{$desktop}{
           margin-bottom:0;
         }
         span{
           color:$primaryColor;
-          text-decoration: underline;
+          font-weight:300;
         }
       }
     }

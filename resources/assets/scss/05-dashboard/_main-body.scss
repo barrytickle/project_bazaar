@@ -5,4 +5,55 @@
     padding:0 30px;
     width:100%;
   }
+
+  .text--group{
+    @media #{$laptop}{
+      width:60%;
+      padding:30px 0;
+    }
+    h1{
+      font-size:5em;
+      font-weight:100;
+      color:$primaryColor;
+    }
+
+    h2{
+      font-size:3em;
+      font-weight:300;
+      color:$black;
+      margin:30px 0;
+    }
+    p{
+      font-size:2em;
+      line-height:145%;
+      margin-top:20px;
+    }
+
+    form{
+      @include display(flex);
+      @include flex-direction(column);
+
+      label{
+        font-size:2em;
+        margin:20px 0;
+        font-weight:400;
+      }
+      input, textarea{
+        width:100%;
+      }
+
+      .selectize-input{
+        border:0;
+        padding:10px 20px;
+        box-shadow: $shadow;
+      }
+
+      input[type="submit"]{
+        margin-top:30px;
+        background:$primaryColor;
+        color:$white;
+        cursor: pointer;
+      }
+    }
+  }
 }

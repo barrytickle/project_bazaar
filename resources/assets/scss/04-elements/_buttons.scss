@@ -1,4 +1,4 @@
-.btn{
+@mixin btn{
   padding:10px 20px;
   font-weight:400;
   text-shadow: $shadow;
@@ -12,6 +12,10 @@
   &:hover{
     background:darken($primaryColor, 10%);
   }
+}
+
+.btn{
+  @include btn;
 }
 
 .btn-outline{

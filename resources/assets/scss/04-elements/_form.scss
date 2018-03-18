@@ -1,12 +1,18 @@
 form{
-  input,textarea{
+  input,textarea, select{
     padding:20px;
     box-shadow:$shadow;
     border:none;
+    font-family:$primaryFont;
+    font-size:1.8rem;
     &::placeholder{
       color:$grey;
       font-style: italic;
     }
+  }
+
+  .submit-block input{
+    @include btn;
   }
 
   label{
@@ -23,6 +29,8 @@ form{
     color:$error_color;
     background:$error;
   }
+
+
 
 
 }

@@ -13,11 +13,12 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTableSeeder::class);
         $this->call(DegreeTableSeeder::class);
         $this->call(StudentTableSeeder::class);
+        $this->call(ProjectTableSeeder::class);
         $this->call(StaffTableSeeder::class);
         $this->call(BlogTypeTableSeeder::class);
-        $this->call(ProjectTableSeeder::class);
         $this->call(LikeTableSeeder::class);
         $this->call(BlogTableSeeder::class);
-        $this->call(StaffDegreeSeeder::class);
+        $this->call(ProjectCommentSeeder::class);
+        $this->call(ProjectAuthorizeSeeder::class);
       }
   }
