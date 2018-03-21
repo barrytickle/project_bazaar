@@ -43,13 +43,13 @@
           <th>View</th>
         </tr>
           @foreach($project as $pro)
-            <tr class="table--item <?php echo str_replace(' ', '-', strtolower($pro->degree->name)); ?> <?php echo date('Y',strtotime($pro->project_date)); ?>">
-              <td data-th="Project Name">{{$pro->project_name}}</td>
-              <td data-th="Author">{{$pro->student->student_id}}</td>
-              <td data-th="Authorized By">{{$pro->staff->staff_name}}</td>
-              <td data-th="Date">{{$pro->project_date}}</td>
-              <td data-th="View"><button class="btn btn-outline trigger" data-slug="{{$pro->project_slug}}" data-user="{{Auth::user()->student->student_id}}">View Project</button></td>
-            </tr>
+              <tr class="table--item <?php echo str_replace(' ', '-', strtolower($pro->degree->name)); ?> <?php echo date('Y',strtotime($pro->project_date)); ?>">
+                <td data-th="Project Name">{{$pro->project_name}}</td>
+                <td data-th="Author">{{$pro->student->student_id}}</td>
+                <td data-th="Authorized By">{{$pro->staff[0]->staff_name}}</td>
+                <td data-th="Date">{{$pro->project_date}}</td>
+                <td data-th="View"><button class="btn btn-outline trigger" data-slug="{{$pro->project_slug}}" data-user="{{Auth::user()->student->student_id}}">View Project</button></td>
+              </tr>
           @endforeach
         </tbody>
     </table>

@@ -11,9 +11,9 @@
     </nav>
     <nav class="nav--bottom">
       <a href="/student/dashboard/projects/create">Propose your own project</a>
-      <a href="/student/dashboard/projects/">My project proposals</a>
-      <a href="/student/dashboard/logs/">Login history</a>
-      <a href="/student/dashboard/liked-projects/">My liked projects</a>
+      <a href="/student/dashboard/projects">My project proposals</a>
+      <a href="/student/dashboard/logs">Login history</a>
+      <a href="/student/dashboard/liked-projects">My liked projects</a>
       <a class="logout" href="/logout">Logout</a>
     </nav>
   </aside>

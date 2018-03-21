@@ -12,7 +12,7 @@ class ProjectAuthorizeSeeder extends Seeder
     public function run()
     {
         DB::table('project_authorizes')->insert([
-          ['id' => 1, 'project_id' => 1, 'staff_id' => 1]
+          ['id' => 1, 'project_id' => 1, 'staff_id' => 1],
         ]);
     }
 }

@@ -30,8 +30,13 @@ class User extends Authenticatable
       return $this->hasOne('App\student');
     }
 
+    public function staff(){
+      return $this->hasOne('App\staff');
+    }
+
     public function role(){
       return $this->belongsTo('App\role');
     }
+    
 
 }

@@ -50,6 +50,6 @@ $(document).ready(function(){
     $(".project--display").html($(this).val());
   });
 
-  $(".text--group select").selectize();
+  // $(".text--group select").selectize();
 
 });

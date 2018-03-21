@@ -19,12 +19,9 @@ class ProjectController extends Controller
     public function __construct()
      {
          $this->middleware('auth');
-
      }
-    public function index(){
-      echo 'Hello World';
+  public function index(){
       $student = Auth::user()->student->id;
-      $user = Auth::user();
       $student_id = Auth::user()->student->student_id;
       $degree = degree::all();
       $project = project::where('project_author', '=', $student)->get();
@@ -49,24 +46,61 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
-      $input = $request->all();
-      $id = $request->input('student_email');
+      $title = $request->input('project_title');
       $degree = $request->input('degree');
-      $email = $id.'@go.edgehill.ac.uk';
-      $password = bcrypt($request->input('student_password'));
-      $checker = user::where('email', '=', $email)->orWhere('password', '=', $password)->first();
-      if (count($checker) < 1) {
-        user::create(['email' => $email, 'password' => $password, 'role' => 1]);
-        $check_2 = user::where('email', '=', $email)->first();
-        print_r($check_2);
-        if (count($check_2) > 0) {
-          $user_id = $check_2->id;
-          echo $user_id;
-          student::create(['user_id' => $user_id, 'student_id' => $id, 'degree_id' => $degree]);
+      $description = $request->input('description');
+      $date = date('d-m-y');
+      $slug = strtolower(str_replace(' ', '-', str_replace('&', 'and', $title)));
+          project::create(['project_name' => $title, 'project_description' => $description, 'project_date' => $date, 'project_slug' =>$slug, 'project_degree' => $degree, 'project_author' => Auth::user()->student->id] );
+      return redirect('/student/dashboard/projects');
+      }
+
+      public function edit($id){
+        $project = project::findOrFail($id);
+        $user_id = Auth::user()->student->id;
+        if($project->project_author == $user_id){
+          $student_id = Auth::user()->student->student_id;
+          $degree = degree::all();
+          return view('student.dashboard.projects.edit', compact('student_id', 'degree', 'project'));
+        }else{
+          return redirect('/student/dashboard/projects');
         }
-        return redirect('/');
-      }else{
-        echo 'User Already Exists';
+      }
+
+      public function update(Request $request, $id)
+     {
+         $pro = project::findOrFail($id);
+         $title = $request->input('project_title');
+         $degree = $request->input('degree');
+         $description = $request->input('description');
+         $date = date('d/m/y');
+         $slug = strtolower(str_replace(' ', '-', str_replace('&', 'and', $title)));
+         $pro->update(['project_name' => $title, 'project_description' => $description, 'project_date' => $date, 'project_slug' =>$slug, 'project_degree' => $degree, 'project_author' => Auth::user()->student->id]);
+         return redirect('/student/dashboard/projects');
+
+     }
+
+     public function destroy($id)
+    {
+        $project = project::find($id);
+        $project->delete();
+        return redirect('/student/dashboard/projects');
     }
-  }
+
+
+    public function comments($id){
+      $project = project::find($id);
+      $comments = $project->comment;
+      $student_id = Auth::user()->student->student_id;
+      return view('student.dashboard.projects.comment', compact('project', 'comments', 'student_id'));
+    }
+
+    public function commentpost(Request $request, $id){
+      $pro = project::findOrFail($id);
+      $user = Auth::user()->id;
+      // $pro->comment()->sync(array(1 => array($id), 2 => array($user),  3 => array( $request->input('project_comment')) ));
+      $pro->comment()->sync(array(1 => ['project_comment' => 'Hello'], 2, 3));
+      // $pro->comment()->sync(array(1 => array('project_comment' => $request->input('project_comment')),2,3));
+      return redirect('/student/dashboard/projects');
+    }
 }

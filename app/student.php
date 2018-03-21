@@ -24,7 +24,7 @@ class student extends Model
        return $this->belongsTo('App\project', 'project_author');
      }
 
-
-
-
+     public function comment(){
+       return $this->belongsToMany('App\user', 'authorize_comments')->withPivot('project_comment');
+     }
 }

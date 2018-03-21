@@ -17,13 +17,14 @@ Route::group(['middleware' => 'web'], function(){
   Route::resource('/login', 'StudentController');
   Route::resource('/register', 'RegisterController' );
   // Route::get('/home', 'HomeController@index');
-  Route::resource('/student/dashboard', 'StudentDashboardController');
   Route::resource('/student/dashboard/projects', 'ProjectController');
+  Route::get('/student/dashboard/projects/{id}/comments', 'ProjectController@comments');
+  Route::post('/student/dashboard/projects/comment/{id}', 'ProjectController@commentpost');
+  Route::resource('/student/dashboard', 'StudentDashboardController');
 
 
   Route::get('/ajaxrequest/modal-load/{student}/{slug}', 'AjaxRequest@modalslug');
   Route::get('/ajaxrequest/like-project/{student}/{slug}', 'AjaxRequest@likeproject');
-
 
   Route::get('/logout', function(){
     Auth::logout();

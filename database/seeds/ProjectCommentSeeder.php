@@ -12,7 +12,7 @@ class ProjectCommentSeeder extends Seeder
     public function run()
     {
         DB::table('authorize_comments')->insert([
-          ['id' => 1, 'project_id' => 2, 'staff_id' => 1, 'project_comment' => 'This project needs more context, too little information. See me for more details.']
+          ['id' => 1, 'project_id' => 2, 'user_id' => 2, 'project_comment' => 'This project needs more context, too little information. See me for more details.']
         ]);
     }
 }

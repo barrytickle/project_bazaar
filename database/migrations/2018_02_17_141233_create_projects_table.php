@@ -16,9 +16,10 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('project_name');
-            $table->string('project_description');
+            $table->longText('project_description');	
             $table->string('project_date');
             $table->string('project_slug');
+            $table->boolean('is_authorized');
             $table->integer('project_degree')->unsigned();
             $table->integer('project_author')->unsigned();
             $table->foreign('project_author')->references('id')->on('students')->onDelete('cascade');

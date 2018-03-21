@@ -4,28 +4,32 @@
   @extends('templates.dashboard')
   @section('dashboardcontent')
     <div class="toolbar toolbar--top filters">
-      <span>Create your own project</span>
+      <span>Edit {{$project->project_name}}</span>
     </div>
     <div class="toolbar toolbar--secondary">
-      <p>You are currently viewing: <span class="project--display">Create your own project</span></p>
+      <p>You are currently viewing: <span class="project--display">Edit your own project</span></p>
     </div>
     <div class="main-body">
       <div class="text--group">
-        <h1>Create your own project</h1>
-        <p>Now it's your time to shine, proposing your own project scope couldn't be any easier. Simply fill out the form below, this will then need to be proposed by your tutor before being visible to all users throughout the system.</p>
+        <h1>Edit: {{$project->project_name}}</h1>
+        <p>{{$project->project_description}}</p>
 
         <h2>Project Details</h2>
-        {!! Form::open(['url' => '/student/dashboard/projects', 'autocomplete' => 'off']) !!}
+        {!! Form::model($project, ['method' => 'PATCH', 'url' => 'student/dashboard/projects/'. $project->id]) !!}
           {!!Form::label('project_title', 'Your Title *') !!}
-          {!!Form::text('project_title', null, ['placeholder' => 'e.g. Project Bazaar']) !!}
+          {!!Form::text('project_title', $project->project_name, ['placeholder' => 'e.g. Project Bazaar']) !!}
           {!!Form::label('degree', 'Which pathway best suits this project?') !!}
           <select name="degree" id="degree">
             @foreach($degree as $deg)
-              <option value="{{$deg->id}}">{{$deg->name}}</option>
+              @if($deg->id == $project->project_degree)
+                <option value="{{$deg->id}}" selected>{{$deg->name}}</option>
+              @else
+                <option value="{{$deg->id}}">{{$deg->name}}</option>
+              @endif
             @endforeach
           </select>
           {!!Form::label('description', 'Project brief') !!}
-          {!!Form::textarea('description', null, ['placeholder' => "Tell us a bit about your project, this doesn't have to be formal... Just explain your idea in your own words."])!!}
+          {!!Form::textarea('description', $project->project_description, ['placeholder' => "Tell us a bit about your project, this doesn't have to be formal... Just explain your idea in your own words." ])!!}
 
           {!!Form::submit('Propose Project', null, ['class' => 'btn']) !!}
          {!! Form::close() !!}
