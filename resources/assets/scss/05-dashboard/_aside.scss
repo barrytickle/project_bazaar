@@ -62,6 +62,9 @@
       @media #{$laptop}{
         padding-right:40px;
       }
+      @media #{$desktop}{
+        padding-right:50px;
+      }
       &:after{
         content:'';
         display:inline-block;
@@ -92,20 +95,4 @@
     }
   }
 
-}
-.right--sidebar{
-  display:none;
-  @media #{$desktop}{
-      width:30vw;
-      display:block;
-
-  }
-
-  &:after{
-    width:100% !important;
-  }
-
-  h1{
-    font-size:4em !important;
-  }
 }

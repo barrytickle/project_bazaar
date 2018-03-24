@@ -1,0 +1,24 @@
+.sample--list{
+  margin:30px 0;
+  list-style: none;
+  li{
+    font-size:2.8em;
+    a{
+      @include display(flex);
+      @include flex-direction(row);
+      @include align-items(center);
+      text-decoration: none;
+      font-weight:300;
+      color:$primaryColor;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+
+    img{
+      height:20px;
+      width:20px;
+      margin-left:20px;
+    }
+  }
+}

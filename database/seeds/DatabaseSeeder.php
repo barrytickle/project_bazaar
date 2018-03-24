@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BlogTableSeeder::class);
         $this->call(ProjectCommentSeeder::class);
         $this->call(ProjectAuthorizeSeeder::class);
+        $this->call(RoleUserSeeder::class);
       }
   }

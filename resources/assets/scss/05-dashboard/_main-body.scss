@@ -1,5 +1,6 @@
 .main-body{
   // padding:0 30px;
+  position: relative;
   width:100vw;
   @media #{$laptop}{
     padding:0 30px;
@@ -17,11 +18,18 @@
       color:$primaryColor;
     }
 
-    h2{
+    >h2{
       font-size:3em;
       font-weight:300;
       color:$black;
       margin:30px 0;
+    }
+
+    >h3{
+      font-size:2em;
+      font-weight:500;
+      color:$black;
+      margin:10px 0;
     }
     p{
       font-size:2em;

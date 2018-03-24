@@ -98,9 +98,7 @@ class ProjectController extends Controller
     public function commentpost(Request $request, $id){
       $pro = project::findOrFail($id);
       $user = Auth::user()->id;
-      // $pro->comment()->sync(array(1 => array($id), 2 => array($user),  3 => array( $request->input('project_comment')) ));
-      $pro->comment()->sync(array(1 => ['project_comment' => 'Hello'], 2, 3));
-      // $pro->comment()->sync(array(1 => array('project_comment' => $request->input('project_comment')),2,3));
+      $pro->comment()->attach($user, array('project_comment' => $request->input('project_comment')));
       return redirect('/student/dashboard/projects');
     }
 }

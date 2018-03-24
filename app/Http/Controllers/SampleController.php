@@ -5,43 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+
+use App\blog;
 use Auth;
-use App\role;
-use App\User;
-use App\degree;
-use App\project;
-use App\student;
-use App\staff;
-use App\like;
-class StudentDashboardController extends Controller
+class SampleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-     public function __construct()
-      {
-          $this->middleware('auth');
-      }
     public function index()
     {
-        $user = Auth::user();
+        $blog = blog::where('type', '=', 2)->get();
         $student_id = Auth::user()->student->student_id;
-        $degree = degree::all();
-        $project = project::where('is_authorized', '=', TRUE)->get();
-        $degree_count = $degree->count();
-        $staff_count = staff::all()->count();
-        $years = array();
-        foreach($project as $pro){
-          $date = $pro->project_date;
-          $newformat = date('Y',strtotime($date));
-          if(!in_array($newformat, $years)){
-            array_push($years, $newformat);
-          }
-        }
-        return view('student.dashboard.index', compact('student_id', 'degree', 'project', 'degree_count', 'years', 'staff_count'));
+        return view('student.dashboard.sample-projects.index', compact('blog', 'student_id'));
     }
 
     /**
@@ -73,11 +51,11 @@ class StudentDashboardController extends Controller
      */
     public function show($id)
     {
-        $project = project::findOrFail($id);
-        $user = Auth::user();
+        $sample = blog::where('slug','=', $id)->first();
+
         $student_id = Auth::user()->student->student_id;
-        $like = like::where('student_id', '=', $student_id)->where('project_id','=', $project->id)->count();
-        return view('student.dashboard.show', compact('project', 'student_id', 'like'));
+        return view('student.dashboard.sample-projects.show', compact('sample', 'student_id'));
+
     }
 
     /**
@@ -112,12 +90,5 @@ class StudentDashboardController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function projectdisplay($project)
-    {
-      $student_id = Auth::user()->student->student_id;
-      $project = project::where('project_slug', '=', $project)->first();
-      return view('students.project', compact('project', 'student_id'));
     }
 }

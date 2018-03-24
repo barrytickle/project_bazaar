@@ -48,7 +48,7 @@
                 <td data-th="Author">{{$pro->student->student_id}}</td>
                 <td data-th="Authorized By">{{$pro->staff[0]->staff_name}}</td>
                 <td data-th="Date">{{$pro->project_date}}</td>
-                <td data-th="View"><button class="btn btn-outline trigger" data-slug="{{$pro->project_slug}}" data-user="{{Auth::user()->student->student_id}}">View Project</button></td>
+                <td data-th="View"><a class="btn btn-outline" href="/student/dashboard/{{$pro->id}}" >View Project</button></td>
               </tr>
           @endforeach
         </tbody>

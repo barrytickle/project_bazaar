@@ -5,7 +5,7 @@
     </div>
     <nav class="main--navigation">
       <a href="/student/dashboard/">View all approved projects</a>
-      <a href="/student/dashboard/what-is-a-project">Learn what a project is</a>
+      <a href="/student/dashboard/blog">Learn what a project is</a>
       <a href="/student/dashboard/sample-projects">Take a look at some sample projects</a>
 
     </nav>
@@ -28,9 +28,4 @@
     @yield('dashboardcontent')
     @include('templates.footerlinks')
   </section>
-  <aside class="section--block right--sidebar">
-    <div class="hero">
-      @include('templates.bazaar')
-    </div>
-  </aside>
 </main>

@@ -10,15 +10,6 @@ use App\like;
 use App\student;
 class AjaxRequest extends Controller
 {
-    public function modalslug($student,$slug){
-      $project = project::where('project_slug', '=', $slug)->first();
-      $like = like::where('project_id', '=', $project->id)->count();
-      $student = student::where('student_id', '=', $student)->first();
-      $sid = $student->user_id;
-      $like = like::where('student_id', '=', $sid)->where('project_id','=', $project->id)->count();
-      return view('ajax.modal', compact('project', 'like', 'student'));
-    }
-
     public function likeproject($student, $slug){
       $student = student::where('student_id', '=', $student)->first();
       $project = project::where('project_slug', '=', $slug)->first();
