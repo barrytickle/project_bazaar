@@ -6,19 +6,18 @@
     <div class="form--group">
       <h2>Let's get you started.</h2>
         {!! Form::open() !!}
-          {!!Form::label('student_email', 'Your Student ID') !!}
-          {!!Form::text('student_email', null, ['placeholder' => 'e.g. 22678832', 'maxlength' => '8']) !!}
+          {!!Form::label('staff_email', 'Your Email address') !!}
+          {!!Form::email('staff_email', null, ['placeholder' => 'e.g. firstname.lastname@go.edgehill.ac.uk']) !!}
 
-          {!!Form::label('student_password', 'Your password:') !!}
-          {!!Form::password('student_password', null) !!}
+          {!!Form::label('staff_password', 'Your password:') !!}
+          {!!Form::password('staff_password', null) !!}
           <div class="submit-block">
             {!!Form::submit('Login', null, ['class' => 'btn']) !!}
-            <a href="/register">Don't have an account? Register here</a>
           </div>
          {!! Form::close() !!}
       </form>
     </div>
-@include('templates.footerlinks')
+@include('templates.stafffooterlinks')
   </section>
   <section class="section--block">
     <div class="hero">

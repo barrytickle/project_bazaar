@@ -28,7 +28,10 @@ Route::group(['middleware' => 'web'], function(){
   Route::resource('/student/dashboard', 'StudentDashboardController');
 
 
+
 /* Staff Controllers */
+Route::resource('staff/dashboard', 'StaffDashboardController');
+
 Route::resource('/staff', 'StaffController');
 
 

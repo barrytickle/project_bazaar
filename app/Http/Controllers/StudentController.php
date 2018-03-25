@@ -63,10 +63,8 @@ class StudentController extends Controller
 
         Auth::loginUsingId($student->id);
         return redirect('student/dashboard');
-      }
-
-
-}
+      } 
+    }
 
     /**
      * Display the specified resource.

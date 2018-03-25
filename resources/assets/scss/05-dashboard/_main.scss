@@ -2,16 +2,16 @@
   @include display(flex);
   >section{
     width:100vw;
-    background-image:url('/images/logo/crest-transparent.svg');
-    background-size:512px 512px;
-    background-position:110% 120%;
-    background-repeat: no-repeat;
     position: relative;
     @media #{$laptop}{
       width:90vw;
       height:100vh;
       overflow-y:auto;
       padding-bottom:60px;
+      background-image:url('/images/logo/crest-transparent.svg');
+      background-size:512px 512px;
+      background-position:110% 120%;
+      background-repeat: no-repeat;
     }
     footer{
       @media #{$laptop}{
@@ -56,6 +56,11 @@
       @include justify-content(flex-start);
       @include justify-content(center);
       @include flex-direction(column);
+      padding:30px;
+
+      @media #{$tablet}{
+        padding:0;
+      }
 
       @media #{$laptop}{
         @include justify-content(flex-start);
@@ -117,14 +122,23 @@
       }
     }
     &.toolbar--secondary{
-      font-size:1.6em;
+      font-size:2em;
       background:$secondaryColor;
+      height:50px;
+      @include display(flex);
+      @include align-items(center);
+      @include justify-content(flex-start);
+      @include flex-direction(row);
       @media #{$laptop}{
-        padding:10px 20px;
+        padding:30px;
+      }
+      p{
+        font-weight:100;
       }
       span, a{
         color:$primaryColor;
         text-decoration: none;
+        font-weight:400;
       }
     }
     .default-navigation{

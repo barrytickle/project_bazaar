@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use Auth;
-
+use App\user;
+use App\staff;
 class StaffController extends Controller
 {
     /**
@@ -18,19 +19,16 @@ class StaffController extends Controller
 
 
      public function __construct(){
-       $this->middleware('auth');
        if(Auth::user()){
          if(strtolower(Auth::user()->role[0]->name) == 'student'){
-           echo 'Not Allowed';
-         }else{
-           
+           return redirect('/student/dashboard/');
          }
        }
      }
 
     public function index()
     {
-        //
+        return view('staff.login');
     }
 
     /**
@@ -51,7 +49,20 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $input = $request->all();
+      $email = $request->input('staff_email');
+      $password = bcrypt($request->input('staff_password'));
+      $checker = user::where('email', '=', $email)->orWhere('password', '=', $password)->first();
+      if (count($checker) < 1) {
+        return redirect('/staff');
+      }else{
+        $staff = user::findOrFail($checker->id);
+        echo $staff->id;
+        $student_id = staff::where('user_id', '=', $staff->id)->first();
+        Auth::loginUsingId($staff->id);
+        return redirect('staff/dashboard');
+      }
+
     }
 
     /**

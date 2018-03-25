@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-17881.656 -20481.732 17.156 21.703">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4f2684;
+      }
+    </style>
+  </defs>
+  <g id="rubbish-bin" transform="translate(-17962.788 -20481.733)">
+    <g id="Group_99" data-name="Group 99" transform="translate(81.133)">
+      <path id="Path_969" data-name="Path 969" class="cls-1" d="M96.809,2.556h-2.9V.672A.673.673,0,0,0,93.226,0a.1.1,0,0,0-.073.025A.093.093,0,0,0,93.1,0H86.2a.663.663,0,0,0-.672.672V2.556h-2.91a1.461,1.461,0,0,0-1.48,1.48V6.456h1.284v13.78A1.441,1.441,0,0,0,83.884,21.7H95.537a1.451,1.451,0,0,0,1.48-1.467V6.456h1.272V4.035A1.462,1.462,0,0,0,96.809,2.556ZM86.868,1.345h5.686V2.556H86.868Zm8.792,18.891c0,.086-.037.122-.122.122H83.884c-.086,0-.122-.037-.122-.122V6.456h11.9ZM96.931,5.111H82.49V4.035c0-.086.037-.135.122-.135h14.2c.086,0,.122.049.122.135Z" transform="translate(-81.133)"/>
+      <rect id="Rectangle_54" data-name="Rectangle 54" class="cls-1" width="1.357" height="11.127" transform="translate(11.041 8.034)"/>
+      <rect id="Rectangle_55" data-name="Rectangle 55" class="cls-1" width="1.357" height="11.127" transform="translate(7.911 8.034)"/>
+      <rect id="Rectangle_56" data-name="Rectangle 56" class="cls-1" width="1.357" height="11.127" transform="translate(4.781 8.034)"/>
+    </g>
+  </g>
+</svg>

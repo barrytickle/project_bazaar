@@ -1,0 +1,185 @@
+.block--row{
+  @include display(flex);
+  @include justify-content(space-between);
+  padding: 30px 0;
+
+  @include flex-direction(column);
+  @media #{$tablet}{
+    @include flex-direction(row);
+  }
+
+  .block{
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
+    width:95%;
+    margin:0 auto;
+    overflow: hidden;
+    padding:20px;
+    height:350px;
+    position: relative;
+    @include display(flex);
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(center);
+    background-size:250px 250px;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    @media #{$tablet}{
+      width:32%;
+    }
+
+    &.block--pencil{
+      background-image:url('/images/icons/staff/pencil.svg');
+    }
+
+    &.block--blog{
+      background-image:url('/images/icons/staff/blog.svg');
+    }
+
+    &.block--student{
+      background-image:url('/images/icons/staff/student.svg');
+    }
+
+
+    .options{
+      width:100%;
+      position: absolute;
+      top:20px;
+      left:30px;
+      font-size:16px;
+      @include display(flex);
+      @include align-items(center);
+
+      @media #{$tablet}{
+        font-size:20px;
+
+      }
+      &:before{
+        content:'';
+        display:inline-block;
+        background-image:url('/images/icons/staff/link.svg');
+        background-size:100% 100%;
+        height:25px;
+        width:25px;
+        margin-right:15px;
+      }
+      a{
+        text-decoration: none;
+        color:$primaryColor;
+      }
+    }
+    span{
+      font-size:61px;
+      color:$primaryColor;
+      font-weight: 100;
+    }
+    p{
+      font-size:25px;
+      color:$black;
+    }
+
+    span, p{
+      display:block;
+      width:100%;
+      text-align: center;
+      @include align-self(center);
+    }
+  }
+}
+
+.table--row{
+  @include display(flex);
+  @include justify-content(space-between);
+  @include flex-direction(column);
+
+  @media #{$laptop}{
+    @include flex-direction(row);
+  }
+
+  h2{
+    font-size:30px;
+    color:$primaryColor;
+    font-weight:100;
+  }
+
+  .table--block{
+    width:100%;
+    @media #{$laptop}{
+      width:66%;
+    }
+  }
+
+  .blog--block{
+    width:100%;
+    @media #{$laptop}{
+      width:32%;
+      height:700px;
+      overflow-y:auto;
+      overflow-x:hidden;
+    }
+
+    .blog{
+      width:90%;
+      padding:30px;
+      @media #{$tablet}{
+        width:70%;
+      }
+      h3{
+        font-size:24px;
+        margin-bottom:10px;
+        font-weight:300;
+      }
+      p{
+        font-size:16px;
+      }
+
+      .options{
+        @include display(flex);
+        @include align-items(center);
+        margin-top:20px;
+
+        a{
+          margin-right:10px;
+          @include display(flex);
+          @include align-items(center);
+          text-decoration: none;
+          font-size:16px;
+          color:$primaryColor;
+
+          @media #{$tablet}{
+            font-size:20px;
+          }
+
+          &:before{
+            content:'';
+            display:block;
+            background-size:100% 100%;
+            height:25px;
+            width:25px;
+          }
+
+          &:hover{
+            text-decoration: underline;
+          }
+
+
+          &.option--edit{
+            &:before{
+              background-image:url('/images/icons/edit.svg');
+            }
+          }
+
+          &.option--delete{
+            &:before{
+              background-image:url('/images/icons/delete.svg');
+            }
+          }
+        }
+      }
+    }
+
+    >p{
+      font-size:16px;
+    }
+  }
+}
