@@ -27,7 +27,7 @@
               </div>
               <p class="attribution">
                 by
-                @if($comment->role == 2)
+                @if($comment->role[0]->name == 'staff')
                   {{$comment->staff->staff_name}} - Tutor
                 @else
                   {{$comment->student->student_id}} - Student
@@ -40,7 +40,7 @@
 
 
         <h2>Make a comment</h2>
-        {!! Form::open(['method' => 'POST','url' => 'student/dashboard/projects/comment/'. $project->id]) !!}
+        {!! Form::open(['method' => 'POST','url' => 'student/dashboard/projects/comment/'. $project->id, 'class' => 'comment--form']) !!}
           {!!Form::label('project_comment', 'Add Comment') !!}
           {!!Form::textarea('project_comment', null,  ['placeholder' => 'Add to the thread of the comments']) !!}
           {!!Form::submit('Add Comment', null, ['class' => 'btn']) !!}

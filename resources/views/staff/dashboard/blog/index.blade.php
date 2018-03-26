@@ -1,33 +1,46 @@
 @extends('templates.master')
 @section('title', 'Test')
 @section('content')
-  @extends('templates.dashboard')
+  @extends('templates.staffdashboard')
   @section('dashboardcontent')
     <div class="toolbar toolbar--top filters">
-      <span>You are previewing all blog posts, all posts have been wrote by the tutors which are available to the system.</span>
+      <p>Edit all blogs</p>
+
     </div>
     <div class="toolbar toolbar--secondary">
-      <p>You are currently viewing: <span class="project--display">Learn what a project is</span></p>
+      <p>You are currently viewing: <span class="project--display">All Blogs</span></p>
     </div>
     <div class="main-body">
-      <div class="dashboard--right">
-        <span>Total Articles: {{$count}} </span>
-      </div>
-      <div class="text--group">
-        <h1>The fundamentals of a project</h1>
-        <p>The following blog posts will allow you to learn about a project, providing you with the essential guidelines you need to excel your dissertation.</p>
-        <div class="blog--list">
+      <table class="rwd-table " cellspacing="0">
+        <tbody class="table--group">
+        <tr class="table--headers">
+          <th>Blog Name</th>
+          <th>Blog Date</th>
+          <th>Blog Type</th>
+          <th>Slug</th>
+          <th>Preview</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
           @foreach($blog as $blogs)
-            <div class="blog">
-              <h2>{{$blogs->blog_title}}</h2>
-              <p>
-                <?php echo substr($blogs->blog_content, 0, 180) . '...'; ?>
-              </p>
-                <a href="/student/dashboard/blog/{{$blogs->slug}}"><span>Continue reading</span> <img src="/images/icons/arrow-right-circle.svg"></a>
-            </div>
+              <tr>
+                <td data-th="Blog Name">{{$blogs->blog_title}}</td>
+                <td data-th="Blog Date"><?php echo date('d-m-y', strtotime($blogs->blog_date)); ?></td>
+                <td data-th="Blog Type">{{$blogs->types->name}}</td>
+                <td data-th="Slug">{{$blogs->slug}}</td>
+                <td data-th="Preview"><a class="btn btn-outline" href="/staff/dashboard/blog/{{$blogs->id}}">Preview</td>
+                <td data-th="Edit"><a class="btn btn-outline" href="/staff/dashboard/blog/{{$blogs->id}}/edit">Edit Blog Post</a></td>
+                <td data-th="Delete">
+                  {!! Form::open(['method' => 'DELETE', 'route' => ['staff.dashboard.blog.destroy', $blogs->id]]) !!}
+                   {!! Form::submit('Delete', ['class' => 'btn btn-outline']) !!}
+                  {!! Form::close() !!}
+                </td>
+              </tr>
           @endforeach
-        </div>
-      </div>
+        </tbody>
+    </table>
     </div>
+
+
   @endsection
 @endsection

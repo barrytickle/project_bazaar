@@ -30,13 +30,23 @@ Route::group(['middleware' => 'web'], function(){
 
 
 /* Staff Controllers */
+
+
+Route::resource('staff/dashboard/blog', 'StaffBlogController');
+Route::resource('staff/dashboard/degrees', 'StaffDegreeController');
+
+Route::get('staff/dashboard/projects/{id}/comments', 'StaffProjectsController@comments');
+Route::post('staff/dashboard/projects/comment/{id}', 'StaffProjectsController@commentpost');
+
+Route::resource('staff/dashboard/projects/{id}/approve', 'StaffProjectsController@approve');
+Route::resource('staff/dashboard/projects', 'StaffProjectsController');
 Route::resource('staff/dashboard', 'StaffDashboardController');
 
 Route::resource('/staff', 'StaffController');
 
 
 
-
+/* Ajax Requests */
   Route::get('/ajaxrequest/like-project/{student}/{slug}', 'AjaxRequest@likeproject');
 
   Route::get('/logout', function(){

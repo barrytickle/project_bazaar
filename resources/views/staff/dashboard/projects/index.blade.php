@@ -1,7 +1,7 @@
 @extends('templates.master')
 @section('title', 'Test')
 @section('content')
-  @extends('templates.dashboard')
+  @extends('templates.staffdashboard')
   @section('dashboardcontent')
     <div class="toolbar toolbar--top filters">
       <div class="search--group">
@@ -10,11 +10,7 @@
           <select data-filter-group="degree" id="degree--group">
             <option selected data-filter="*">All Projects</option>
             @foreach($degree as $deg)
-              @if(Auth::user()->student->degree_id == $deg->id)
                 <option  data-filter=".<?php echo str_replace(' ', '-', strtolower($deg->name)); ?>">{{$deg->name}}</option>
-              @else
-                <option data-filter=".<?php echo str_replace(' ', '-', strtolower($deg->name)); ?>">{{$deg->name}}</option>
-              @endif
             @endforeach
           </select>
       </div>
@@ -37,16 +33,17 @@
         <tbody class="table--group">
         <tr class="table--headers">
           <th>Project Name</th>
+          <th>Degree</th>
           <th>Author</th>
           <th>Authorized By</th>
           <th>Date</th>
-          <th>Edit</th>
           <th>Comments</th>
-          <th>Delete</th>
+          <th>Approve</th>
         </tr>
           @foreach($project as $pro)
               <tr class="table--item <?php echo str_replace(' ', '-', strtolower($pro->degree->name)); ?> <?php echo date('Y',strtotime($pro->project_date)); ?>">
                 <td data-th="Project Name">{{$pro->project_name}}</td>
+                <td data-th="Degree">{{$pro->degree->name}}</td>
                 <td data-th="Author">{{$pro->student->student_id}}</td>
                 <td data-th="Authorized By">
                   @if($pro->is_authorized)
@@ -56,13 +53,18 @@
                   @endif
                 </td>
                 <td data-th="Date">{{$pro->project_date}}</td>
-                <td data-th="Edit"><a class="btn btn-outline" href="/student/dashboard/projects/{{$pro->id}}/edit">Edit Project</a></td>
-                <td data-th="Comments"><a class="btn btn-outline" href="/student/dashboard/projects/{{$pro->id}}/comments">View Comments <?php echo count($pro->comment); ?></a></td>
-                <td data-th="Delete">
-                  {!! Form::open(['method' => 'DELETE', 'route' => ['student.dashboard.projects.destroy', $pro->id]]) !!}
-                   {!! Form::submit('Delete', ['class' => 'btn btn-outline']) !!}
-                  {!! Form::close() !!}
+                <td data-th="Comments"><a class="btn btn-outline" href="/staff/dashboard/projects/{{$pro->id}}/comments">View Comments <?php echo count($pro->comment); ?></a></td>
+                <td data-th="Approve">
+                  @if($pro->is_authorized)
+                    @if($pro->staff[0]->staff_name == Auth::user()->staff->staff_name)
+                      <a class="btn btn-outline btn-approve" href="/staff/dashboard/projects/{{$pro->id}}/approve" >Unapprove Project</a>
+                    @else
+                      {{$pro->staff[0]->staff_name}} must unapprove
+                    @endif
 
+                  @else
+                    <a class="btn btn-outline btn-approve" href="/staff/dashboard/projects/{{$pro->id}}/approve">Approve Project</a>
+                  @endif
                 </td>
               </tr>
           @endforeach

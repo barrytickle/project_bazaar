@@ -49,7 +49,7 @@ class ProjectController extends Controller
       $title = $request->input('project_title');
       $degree = $request->input('degree');
       $description = $request->input('description');
-      $date = date('d-m-y');
+      $date = date('d.m.y');
       $slug = strtolower(str_replace(' ', '-', str_replace('&', 'and', $title)));
           project::create(['project_name' => $title, 'project_description' => $description, 'project_date' => $date, 'project_slug' =>$slug, 'project_degree' => $degree, 'project_author' => Auth::user()->student->id] );
       return redirect('/student/dashboard/projects');

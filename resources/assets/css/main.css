@@ -854,15 +854,15 @@ footer {
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -moz-box-pack: justify;
-  box-pack: justify;
-  -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
-  -ms-justify-content: space-between;
-  -o-justify-content: space-between;
-  justify-content: space-between;
-  -ms-flex-pack: justify;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
   box-orient: vertical;
@@ -944,6 +944,8 @@ footer .callback-url a {
   color: #fff;
   transition: 0.2s ease-in-out;
   cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
 }
 .btn:hover {
   background: #371b5c;
@@ -978,6 +980,8 @@ form .submit-block input {
   color: #fff;
   transition: 0.2s ease-in-out;
   cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
 }
 form .submit-block input:hover {
   background: #371b5c;
@@ -2241,46 +2245,6 @@ form .input--error {
 }
 .table--row .blog--block .blog .options a {
   margin-right: 10px;
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  box-align: center;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  -o-align-items: center;
-  align-items: center;
-  -ms-flex-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  color: #4F2684;
-}
-@media (min-width: 768px) {
-  .table--row .blog--block .blog .options a {
-    font-size: 20px;
-  }
-}
-.table--row .blog--block .blog .options a:before {
-  content: '';
-  display: block;
-  background-size: 100% 100%;
-  height: 25px;
-  width: 25px;
-}
-.table--row .blog--block .blog .options a:hover {
-  text-decoration: underline;
-}
-.table--row .blog--block .blog .options a.option--edit:before {
-  background-image: url("/images/icons/edit.svg");
-}
-.table--row .blog--block .blog .options a.option--delete:before {
-  background-image: url("/images/icons/delete.svg");
 }
 .table--row .blog--block > p {
   font-size: 16px;

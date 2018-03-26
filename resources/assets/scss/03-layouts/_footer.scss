@@ -3,10 +3,10 @@ footer{
   width:70%;
   font-size:1.6em;
   @include display(flex);
-  @include justify-content(space-between);
+  @include justify-content(center);
   @include flex-direction(column);
   @media #{$laptop}{
-    @include flex-direction(row); 
+    @include flex-direction(row);
     position: absolute;
     left:50%;
     transform: translateX(-50%);

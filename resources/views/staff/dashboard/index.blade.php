@@ -54,7 +54,7 @@
                     <td data-th="Degree">{{$pro->degree->name}}</td>
                     <td data-th="Date">{{$pro->project_date}}</td>
                     <td data-th="Comments"><?php echo count($pro->comment); ?></td>
-                    <td data-th="View"><a class="btn btn-outline" href="/staff/dashboard/{{$pro->id}}" >View Project</button></td>
+                    <td data-th="View"><a class="btn btn-outline" href="/staff/dashboard/projects/{{$pro->id}}/comments" >View Project</button></td>
                   </tr>
               @endforeach
             </tbody>
@@ -71,8 +71,10 @@
                 <?php echo substr($blogs->blog_content, 0, 180) . '...'; ?>
               </p>
               <div class="options">
-                <a href="#" class="option--edit"><span>Edit</span></a>
-                <a href="#" class="option--delete"><span>Delete</span></a>
+                <a href="#" class="btn">Edit</a>
+                {!! Form::open(['method' => 'DELETE', 'route' => ['student.dashboard.projects.destroy', $pro->id]]) !!}
+                 {!! Form::submit('Delete', ['class' => 'btn']) !!}
+                {!! Form::close() !!}
               </div>
             </div>
           @endforeach

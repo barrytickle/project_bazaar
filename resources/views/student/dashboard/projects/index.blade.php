@@ -11,7 +11,7 @@
             <option selected data-filter="*">All Projects</option>
             @foreach($degree as $deg)
               @if(Auth::user()->student->degree_id == $deg->id)
-                <option  data-filter=".<?php echo str_replace(' ', '-', strtolower($deg->name)); ?>">{{$deg->name}}</option>
+                <option  data-filter=".<?php echo str_replace(' ', '-', strtolower($deg->name)); ?>" selected>{{$deg->name}}</option>
               @else
                 <option data-filter=".<?php echo str_replace(' ', '-', strtolower($deg->name)); ?>">{{$deg->name}}</option>
               @endif

@@ -38,5 +38,9 @@ class User extends Authenticatable
       return $this->belongsToMany('App\role', 'role_users');
     }
 
+    public function comment(){
+      return $this->belongsToMany('App\project', 'authorize_comments')->withPivot('project_comment');
+    }
+
 
 }
