@@ -15,6 +15,15 @@ use App\blog;
 
 class StaffDashboardController extends Controller
 {
+    public function __construct(){
+      if(!empty(Auth::user())){
+        if(Auth::user()->role[0]->name != 'staff' ){
+          return redirect('/student/dashboard');
+        }
+      }else{
+        return redirect('/login');
+      }
+      }
     public function index(){
       $user = Auth::user();
       $staff_name = Auth::user()->staff->staff_name;
@@ -34,6 +43,8 @@ class StaffDashboardController extends Controller
       }
       return view('staff.dashboard.index', compact('staff_name', 'degree', 'project', 'degree_count', 'years', 'staff_count', 'blog', 'student'));
     }
+
+    
 
 
   }

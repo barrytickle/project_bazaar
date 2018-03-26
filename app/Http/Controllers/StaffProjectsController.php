@@ -16,7 +16,7 @@ class StaffProjectsController extends Controller
 
     public function __construct(){
 
-      if(Auth::user()->role[0]->name == 'student'){
+      if(Auth::user()->role[0]->name != 'staff'){
         return redirect('/student/dashboard');
       }
     }
@@ -63,6 +63,23 @@ class StaffProjectsController extends Controller
         $project->is_authorized = 1;
         $project->save();
       }
+    }
+
+    public function approved(){
+      $project = project::where('is_authorized', '=', TRUE)->get();
+      $staff_name = Auth::user()->staff->staff_name;
+      $degree = degree::all();
+      $degree_count = $degree->count();
+      $staff_count = staff::all()->count();
+      $years = array();
+      foreach($project as $pro){
+        $date = $pro->project_date;
+        $newformat = date('Y',strtotime($date));
+        if(!in_array($newformat, $years)){
+          array_push($years, $newformat);
+        }
+      }
+      return view('staff.dashboard.projects.approved', compact('staff_name', 'degree', 'project', 'degree_count', 'years', 'staff_count'));
     }
 
 }

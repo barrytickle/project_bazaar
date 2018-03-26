@@ -30,7 +30,7 @@ class RegisterController extends Controller
       $degree = $request->input('degree');
       $email = $id.'@go.edgehill.ac.uk';
       $password = bcrypt($request->input('student_password'));
-      $checker = user::where('email', '=', $email)->orWhere('password', '=', $password)->first();
+      $checker = user::where('email', '=', $email)->first();
       if (count($checker) < 1) {
         user::create(['email' => $email, 'password' => $password]);
         $check_2 = user::where('email', '=', $email)->first();
@@ -47,9 +47,9 @@ class RegisterController extends Controller
           echo 'works';
           $checker_3->role()->attach(1);
         }
-        // return redirect('/');
+        return redirect('/');
       }else{
-        // return redirect('/login');
+        return redirect('/login');
     }
   }
 }

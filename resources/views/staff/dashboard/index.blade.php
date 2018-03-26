@@ -1,5 +1,5 @@
 @extends('templates.master')
-@section('title', 'Test')
+@section('title', 'Staff Area | Home | Project Bazaar')
 @section('content')
   @extends('templates.staffdashboard')
   @section('dashboardcontent')
@@ -71,8 +71,8 @@
                 <?php echo substr($blogs->blog_content, 0, 180) . '...'; ?>
               </p>
               <div class="options">
-                <a href="#" class="btn">Edit</a>
-                {!! Form::open(['method' => 'DELETE', 'route' => ['student.dashboard.projects.destroy', $pro->id]]) !!}
+                <a class="btn" href="/staff/dashboard/blog/{{$blogs->id}}/edit">Edit</a>
+                {!! Form::open(['method' => 'DELETE', 'route' => ['staff.dashboard.blog.destroy', $blogs->id]]) !!}
                  {!! Form::submit('Delete', ['class' => 'btn']) !!}
                 {!! Form::close() !!}
               </div>

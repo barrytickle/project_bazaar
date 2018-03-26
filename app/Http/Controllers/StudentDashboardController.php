@@ -76,7 +76,8 @@ class StudentDashboardController extends Controller
         $project = project::findOrFail($id);
         $user = Auth::user();
         $student_id = Auth::user()->student->student_id;
-        $like = like::where('student_id', '=', $student_id)->where('project_id','=', $project->id)->count();
+        $like = project::find($id)->like()->where('student_id', '=', Auth::user()->student->id)->first();
+        $like = count($like);
         return view('student.dashboard.show', compact('project', 'student_id', 'like'));
     }
 
@@ -120,4 +121,5 @@ class StudentDashboardController extends Controller
       $project = project::where('project_slug', '=', $project)->first();
       return view('students.project', compact('project', 'student_id'));
     }
+
 }

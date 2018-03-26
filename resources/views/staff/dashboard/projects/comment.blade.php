@@ -1,10 +1,10 @@
 @extends('templates.master')
-@section('title', 'Test')
+@section('title', 'Staff Area | Comments for project {{$project->project_name}} | Project Bazaar')
 @section('content')
   @extends('templates.staffdashboard')
   @section('dashboardcontent')
     <div class="toolbar toolbar--top filters">
-      <span>Commenst for project {{$project->project_name}}</span>
+      <span>Comments for project {{$project->project_name}}</span>
     </div>
     <div class="toolbar toolbar--secondary">
       <p>You are currently viewing: <span class="project--display">Project Comments</span></p>

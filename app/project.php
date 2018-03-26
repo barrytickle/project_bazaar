@@ -22,10 +22,6 @@ class project extends Model
       return $this->belongsTo('App\student', 'project_author');
     }
 
-    public function like(){
-      return $this->belongsTo('App\like');
-    }
-
     public function degree(){
       return $this->belongsTo('App\degree', 'project_degree');
     }
@@ -36,5 +32,9 @@ class project extends Model
 
     public function comment(){
       return $this->belongsToMany('App\user', 'authorize_comments')->withPivot('project_comment');
+    }
+
+    public function like(){
+      return $this->hasMany('App\like');
     }
 }

@@ -1,5 +1,5 @@
 @extends('templates.master')
-@section('title', 'Test')
+@section('title', 'Student Area | Create your own project | Project Bazaar')
 @section('content')
   @extends('templates.dashboard')
   @section('dashboardcontent')

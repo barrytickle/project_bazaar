@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Auth;
 use App\user;
 use App\staff;
+use App\degree;
 class StaffController extends Controller
 {
     /**
@@ -109,4 +110,32 @@ class StaffController extends Controller
     {
         //
     }
+
+    public function register(){
+      return view('staff.register');
+    }
+
+    public function registerstore(Request $request)
+    {
+      $name = $request->input('staff_name');
+      $id = $request->input('staff_email');
+      $email = $request->input('staff_email');
+      $password = bcrypt($request->input('staff_password'));
+      $checker = user::where('email', '=', $email)->first();
+      echo $checker;
+      if (count($checker) < 1) {
+        user::create(['email' => $email, 'password' => $password]);
+        $check_2 = user::where('email', '=', $email)->first();
+        print_r($check_2);
+          $user_id = $check_2->id;
+          staff::create(['user_id' => $user_id, 'staff_name' => $name]);
+          $checker_3 = user::where('email', '=', $email)->first();
+          if($checker_3){
+            $checker_3->role()->attach(2);
+          }
+        return redirect('/staff');
+      }else{
+        return redirect('/staff');
+    }
+  }
 }

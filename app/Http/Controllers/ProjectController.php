@@ -20,6 +20,8 @@ class ProjectController extends Controller
      {
          $this->middleware('auth');
      }
+
+     /* will load up the table, which shows all projects */
   public function index(){
       $student = Auth::user()->student->id;
       $student_id = Auth::user()->student->student_id;
@@ -37,13 +39,13 @@ class ProjectController extends Controller
       }
       return view('student.dashboard.projects.index', compact('student_id', 'degree', 'project', 'degree_count', 'years', 'staff_count'));
     }
-
+    /* will load up the view to allow a new project to be created */
     public function create(){
       $student_id = Auth::user()->student->student_id;
       $degree = degree::all();
       return view('student.dashboard.projects.create', compact('student_id', 'degree'));
     }
-
+    /* Will store a new project within the database */
     public function store(Request $request)
     {
       $title = $request->input('project_title');
@@ -54,10 +56,11 @@ class ProjectController extends Controller
           project::create(['project_name' => $title, 'project_description' => $description, 'project_date' => $date, 'project_slug' =>$slug, 'project_degree' => $degree, 'project_author' => Auth::user()->student->id] );
       return redirect('/student/dashboard/projects');
       }
-
+      /* Allows the user to edit a project */
       public function edit($id){
         $project = project::findOrFail($id);
         $user_id = Auth::user()->student->id;
+        /* Will check if the project author will match the id of the user which is logged in */
         if($project->project_author == $user_id){
           $student_id = Auth::user()->student->student_id;
           $degree = degree::all();
@@ -66,7 +69,7 @@ class ProjectController extends Controller
           return redirect('/student/dashboard/projects');
         }
       }
-
+      /* Will update a project upon request */
       public function update(Request $request, $id)
      {
          $pro = project::findOrFail($id);
@@ -79,7 +82,7 @@ class ProjectController extends Controller
          return redirect('/student/dashboard/projects');
 
      }
-
+     /* Will delete a project once a delete method has been sent to the route */
      public function destroy($id)
     {
         $project = project::find($id);
@@ -87,7 +90,7 @@ class ProjectController extends Controller
         return redirect('/student/dashboard/projects');
     }
 
-
+    /* Will load all comments based on the ID of the project */
     public function comments($id){
       $project = project::find($id);
       $comments = $project->comment;
@@ -95,10 +98,11 @@ class ProjectController extends Controller
       return view('student.dashboard.projects.comment', compact('project', 'comments', 'student_id'));
     }
 
+
+    /* Ajax function called when making a comment, small loader will appear before refreshing the page when the comment has been loaded */
     public function commentpost(Request $request, $id){
       $pro = project::findOrFail($id);
       $user = Auth::user()->id;
       $pro->comment()->attach($user, array('project_comment' => $request->input('project_comment')));
-      return redirect('/student/dashboard/projects');
     }
 }

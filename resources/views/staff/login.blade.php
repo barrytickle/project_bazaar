@@ -1,5 +1,5 @@
 @extends('templates.master')
-@section('title', 'Project Bazaar, Login')
+@section('title', 'Staff Login | Project Bazaar')
 @section('content')
 <main class="split--group">
   <section class="section--form">
@@ -13,6 +13,7 @@
           {!!Form::password('staff_password', null) !!}
           <div class="submit-block">
             {!!Form::submit('Login', null, ['class' => 'btn']) !!}
+            <a href="/staff/register">Don't have an account? Register here</a>
           </div>
          {!! Form::close() !!}
       </form>

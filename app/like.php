@@ -11,4 +11,8 @@ class like extends Model
     'project_id'
   ];
 
+  public function like(){
+    return $this->hasMany('App\project');
+  }
+
 }
