@@ -51,7 +51,7 @@ class StudentController extends Controller
       $password = bcrypt($request->input('student_password'));
       $checker = user::where('email', '=', $email)->orWhere('password', '=', $password)->first();
       if (count($checker) < 1) {
-        echo 'Not found';
+        return redirect('/login');
       }else{
         $student = user::findOrFail($checker->id);
         echo $student->id;
@@ -63,7 +63,7 @@ class StudentController extends Controller
 
         Auth::loginUsingId($student->id);
         return redirect('student/dashboard');
-      } 
+      }
     }
 
     /**

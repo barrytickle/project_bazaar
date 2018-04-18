@@ -14,21 +14,21 @@
       <div class="block--row">
         <div class="block block--pencil">
           <div class="options">
-            <a href="#">View Requests</a>
+            &nbsp;
           </div>
           <span><?php echo count($project); ?></span>
           <p>Proposal Request(s)</p>
         </div>
         <div class="block block--blog">
           <div class="options">
-            <a href="#">View Posts</a>
+            <a href="/staff/dashboard/blog">View Posts</a>
           </div>
           <span><?php echo count($blog); ?></span>
           <p>View Blog Post(s)</p>
         </div>
         <div class="block block--student">
           <div class="options">
-            <a href="#">View Approved Projects</a>
+            <a href="/staff/dashboard/projects/approved">View Approved Projects</a>
           </div>
           <span><?php echo count($student); ?></span>
           <p>Registered Student(s)</p>

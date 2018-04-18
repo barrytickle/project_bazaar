@@ -1,3 +1,7 @@
+/* Defines styling for the hamburger menu on a mobile/tablet resolution */
+
+
+/* Defines styling for the container of the hamburger icon the circular shape */
 .hamburger_float{
   position: fixed;
   height:50px;
@@ -14,6 +18,8 @@
     display:none;
   }
 
+
+  /* Defines styling for the lines and the animation of the hamburger menu */
   #hamburger{
     width: 36px;
     height: 18px;
@@ -46,6 +52,7 @@
       }
     }
 
+  /* Will change position based on the hover element of the menu, will make lines bigger & smaller */
     &:hover, &:focus{
       .line{
         &:nth-child(1){

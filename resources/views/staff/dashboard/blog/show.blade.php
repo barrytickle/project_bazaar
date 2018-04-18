@@ -1,5 +1,5 @@
 @extends('templates.master')
-@section('title', 'Staff Area | {{$sample->blog_title}} | Project Bazaar ') 
+@section('title', 'Staff Area | {{$sample->blog_title}} | Project Bazaar ')
 @section('content')
   @extends('templates.staffdashboard')
   @section('dashboardcontent')

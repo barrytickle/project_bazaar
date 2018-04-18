@@ -1,5 +1,5 @@
 @extends('templates.master')
-@section('title', 'Staff Area | Edit {{$blog->blog_title}} | Project Bazaar')
+@section('title', 'Staff Area | Edit a blog post | Project Bazaar')
 @section('content')
   @extends('templates.staffdashboard')
   @section('dashboardcontent')
@@ -18,7 +18,7 @@
           {!!Form::text('blog_title', $blog->blog_title) !!}
           {!!Form::label('blog_slug', 'Alter Slug') !!}
           {!!Form::text('blog_slug', $blog->slug) !!}
-          {!!Form::label('type', 'Which pathway best suits this project?') !!}
+          {!!Form::label('type', 'Which type suits this blog post?') !!}
           <select name="type" id="type">
             @foreach($type as $types)
               @if($types->id == $blog->type)

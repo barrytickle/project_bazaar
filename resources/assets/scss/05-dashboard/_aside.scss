@@ -1,8 +1,9 @@
+/* Styling for the navigation bar on the left of the dashboard, keeps navbar height 100vh */
 .dashboard aside{
   height:100vh;
 }
 
-
+/* Styling for navigation bar on the dashobard */
 .left--sidebar{
   &.active{
     width:100%;
@@ -18,10 +19,8 @@
   }
   font-size:1.6em;
   box-shadow:$shadow;
-  // position: relative;
-
   display:none;
-
+/* Media query for laptop, defines the width, adds flex and height to the laptop resolution */
   @media #{$laptop}{
     width:20vw;
     @include display(flex);
@@ -45,7 +44,7 @@
     }
   }
 
-
+  /* Styles elements within the nav section on the navigation bar */
   nav{
     @include display(flex);
     @include flex-direction(column);
@@ -77,6 +76,7 @@
     }
   }
 
+  /* Defines styling for different elements on the bottom nav, such as the logout button */
   .nav--bottom{
     position: absolute;
     bottom:0;
