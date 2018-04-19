@@ -17,7 +17,7 @@
     <li>Database password: webdev</li>
 </ul>
 
-<h2>Sample login data</h2>
+<h2>Default login data</h2>
 <ul>
     <li>Student - Username: 22678832 Password: webdev</li>
     <li>Staff - Username: david.walsh@edgehill.ac.uk Password: webdev</li>
@@ -32,5 +32,6 @@
     <li>Click add a new schema, call the Schema <b>bazaar</b> with a <b>Utf-8 default Collation</b></li>
     <li>Using terminal, ensure that your file path is located in the same folder as the project. Type <code>php artisan migrate</code> This will populate your database with the tables required to run the application</li>
     <li>Again using terminal, run the command <code>php artisan db:seed</code> This will now populate your tables with some sample information for you to try out</li>
+    <li>To start the build, run <code>php artisan serve</code> the url for the site will be http://localhost:8000</li>
     <li>All login information can be found above.</li>
 </ol>
