@@ -1,7 +1,7 @@
-#Introduction
+ <h2>Introduction</h2>
 <p>Project Bazaar is a system which allows students to propose projects, while reading guidelines on how to compose a scope for a project. The system will be split up into two sections, a section for staff members, a section for students. This project is composed within laravel 5.2</p>
 
-#Requirements
+<h2>Requirements</h2>
 <ul>
     <li>Git</li>
     <li>Composer</li>
@@ -17,14 +17,13 @@
     <li>Database password: webdev</li>
 </ul>
 
-#Sample login data
-
+<h2>Sample login data</h2>
 <ul>
     <li>Student - Username: 22678832 Password: webdev</li>
     <li>Staff - Username: david.walsh@edgehill.ac.uk Password: webdev</li>
 </ul>
 
-#Instructions to install
+<h2>Instructions to install</h2>
 <ol>
     <li>Ensure you have git installed on linux</li>
     <li>Open up a terminal on linux and navigate to the selected folder path to where you wish to install the site</li>
